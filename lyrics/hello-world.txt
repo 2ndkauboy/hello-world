@@ -1,0 +1,47 @@
+print "Hello World!"
+trace('Hello World');
+( print("Hello World!") )
+? "Hello World!"
+<%= "Hello World!" %>
+<?php echo "Hello World!" ?>
+MsgBox Hello World!
+MsgBox(0, "", "Hello World!")
+(princ "Hello World!")
+BEGIN { print "Hello World!" }
+10 PRINT "Hello World!"
+@echo Hello World!
+echo Hello World!
+MESSAGE('Hello World')
+std::cout << "Hello World!\n";
+System::Console::WriteLine("Hello World!");
+System.Console.WriteLine("Hello World!");
+(println "Hello World!")
+writeln("Hello World!");
+putline ("Hello World!");
+printfn "Hello World"
+.( Hello World!)
+show_message("Hello World!");
+fmt.Println("Hello World!")
+"Hello World!" print
+alert("Hello World!");
+document.innerHTML="Hello World!";
+document.write("Hello World!");
+window.alert("Hello World!");
+System.out.println("Hello World!");
+g.drawString("Hello World!", 100, 50);
+print [Hello World!]
+fprintf('Hello World!');
+disp('Hello World!');
+print_endline "Hello World!";;
+puts("Hello World!");
+{Show 'Hello World'}
+cat ("Hello World!\n")
+say "Hello World!"
+puts "Hello World!"
+%put Hello World!;
+'Hello World!' out.
+Transcript show: 'Hello World!'.
+debug "Hello World!";
+SELECT 'Hello World!';
+Console.WriteLine("Hello World!")
+<BODY>Hello World!</BODY>
