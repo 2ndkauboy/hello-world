@@ -2,6 +2,7 @@
 **Contributors:** Kau-Boy  
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504  
 **Tags:** hello, dolly, yoda  
+**Stable tag:** 1.0.0  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0  
 
