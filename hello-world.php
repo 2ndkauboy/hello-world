@@ -1,13 +1,15 @@
 <?php
 /*
-Plugin Name: Hello World
-Version: 0.1
-Description: In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new plugin. And how could someone possible name a new default plugin other than "Hello World", as it's THE definition for a default example :)
-Author: Bernhard Kau
-Author URI: http://kau-boys.de
-Plugin URI: https://github.com/2ndkauboy/hello-world
-Text Domain: hello-world
-Domain Path: /languages
+ * Plugin Name: Hello World
+ * Version: 0.1
+ * Description: In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new plugin. And how could someone possible name a new default plugin other than "Hello World", as it's THE definition for a default example :)
+ * Author: Bernhard Kau
+ * Author URI: http://kau-boys.de
+ * Plugin URI: https://github.com/2ndkauboy/hello-world
+ * Text Domain: hello-world
+ * Domain Path: /languages
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl-3.0
 */
 
 function hello_world_lyric() {
