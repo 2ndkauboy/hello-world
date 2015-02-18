@@ -11,8 +11,16 @@ Domain Path: /languages
 */
 
 function hello_world_lyric() {
-	/** These are the lyrics to Hello World */
-	$lyrics = file_get_contents( plugin_dir_path( __FILE__ ) . '/lyrics/hello-world.txt' );
+	// get the chosen lyrics files file for the user
+	$lyrics_file = get_user_option( 'hello_world_lyrics', get_current_user_id() );
+	$lyrics_file_path = plugin_dir_path( __FILE__ ) . 'lyrics/' . $lyrics_file;
+	// check if file exsists
+	if ( empty( $lyrics_file ) || ! file_exists( $lyrics_file_path ) ) {
+		return false;
+	}
+
+	// These are the lyrics to show
+	$lyrics = file_get_contents( $lyrics_file_path );
 
 	// Here we split it into lines
 	$lyrics = explode( "\n", $lyrics );
@@ -23,8 +31,12 @@ function hello_world_lyric() {
 
 // This just echoes the chosen line, we'll position it later
 function hello_world_admin_notice() {
+
 	$chosen = hello_world_lyric();
-	echo "<p id='hello_world'>$chosen</p>";
+
+	if ( ! empty( $chosen ) ) {
+		echo "<p id='hello_world'>$chosen</p>";
+	}
 }
 
 // Now we set that function up to execute when the admin_notices action is called
@@ -49,3 +61,51 @@ function hello_world_css() {
 }
 
 add_action( 'admin_head', 'hello_world_css' );
+
+function hello_world_menu() {
+	add_options_page( 'Hello World Lyrics', 'Hello World', 'read', 'hello-world', 'hello_world_options' );
+}
+
+add_action( 'admin_menu', 'hello_world_menu' );
+
+function hello_world_options() {
+
+	$settings_saved = false;
+
+	if ( isset( $_POST[ 'save' ] ) ) {
+		update_user_option( get_current_user_id(), 'hello_world_lyrics', $_POST[ 'hello_world_lyrics' ] );
+		$settings_saved = true;
+	}
+
+	?>
+
+	<div class="wrap">
+		<h1><?php _e( 'Hello World Lyrics', 'hello-world' ); ?></h1>
+		<?php if ( $settings_saved ) : ?>
+			<div id="message" class="updated fade">
+				<p><strong><?php _e( 'Options saved.' ) ?></strong></p>
+			</div>
+		<?php endif ?>
+		<h2>
+			<?php _e( 'Choose the lyrics you want to be shown in the Dashboard.', 'hello-world' ) ?>
+		</h2>
+		<form method="post" action="">
+			<div>
+				<p>
+					<label for="hello_world_lyrics"><?php _e( 'Available lyrics files:', 'hello-world' ) ?></label>
+				</p>
+				<select id="hello_world_lyrics" name="hello_world_lyrics">
+					<option value="">none (hide lyrics)</option>
+					<?php foreach( glob( plugin_dir_path( __FILE__ ) . 'lyrics/*.txt' ) as $lyrics_file ) : ?>
+						<option><?php echo basename( $lyrics_file ) ?></option>
+					<?php endforeach ?>
+				</select>
+			</div>
+			<p class="submit">
+				<input class="button-primary" name="save" type="submit" value="<?php _e( 'Save Changes' ) ?>" />
+			</p>
+		</form>
+	</div>
+
+<?php
+}
