@@ -2,7 +2,7 @@
 **Contributors:** Kau-Boy  
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504  
 **Tags:** hello, dolly, yoda  
-**Tested up to:** 5.2.3  
+**Tested up to:** 6.2  
 **Requires PHP:** 5.2  
 **Stable tag:** 2.0.1  
 **License:** GPLv3  
