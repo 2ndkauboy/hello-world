@@ -8,7 +8,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: Hello World
- * Version: 2.0.1
+ * Version: 2.1.0
  * Description: In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new plugin. And how could someone possible name a new default plugin other than "Hello World", as it's THE definition for a default example :)
  * Author: Bernhard Kau
  * Author URI: http://kau-boys.de
@@ -66,22 +66,31 @@ add_action( 'admin_notices', 'hello_world_admin_notice' );
  * We need some CSS to position the paragraph
  */
 function hello_world_css() {
-	// This makes sure that the positioning is also good for right-to-left languages.
-	$x = is_rtl() ? 'left' : 'right';
-
-	// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo "
-	<style type='text/css'>
-	#hello_world {
-		float: $x;
-		padding-$x: 15px;
-		padding-top: 5px;
-		margin: 0;
-		font-size: 11px;
-	}
+	?>
+	<style>
+		#hello_world {
+			float: right;
+			padding: 5px 10px;
+			margin: 0;
+			font-size: 12px;
+			line-height: 1.6666;
+		}
+		.rtl #hello_world {
+			float: left;
+		}
+		.block-editor-page #hello_world {
+			display: none;
+		}
+		@media screen and (max-width: 782px) {
+			#hello_world,
+			.rtl #hello_world {
+				float: none;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
 	</style>
-	";
-	// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
+	<?php
 }
 add_action( 'admin_head', 'hello_world_css' );
 
