@@ -1,12 +1,12 @@
-# Hello World #
-**Contributors:** Kau-Boy  
-**Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504  
-**Tags:** hello, dolly, yoda, world  
-**Tested up to:** 6.3  
-**Requires PHP:** 5.2  
-**Stable tag:** 2.1.0  
-**License:** GPLv3  
-**License URI:** http://www.gnu.org/licenses/gpl-3.0  
+# Hello World
+Contributors: Kau-Boy  
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504  
+Tags: hello, dolly, yoda, world  
+Tested up to: 6.3  
+Requires PHP: 5.2  
+Stable tag: 2.1.0  
+License: GPLv3  
+License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
 
 In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new plugin. And how could someone possible name a new default plugin other than "Hello World", as it's THE definition for a default example :)
