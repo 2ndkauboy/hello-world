@@ -23,6 +23,7 @@ Yes, you can! Just create a folder `wp-content/uploads/hello-world-lyrics` and s
 
 * Update CSS from Hello Dolly
 * Make the output more accessible
+* Time invested for this release: 30min
 
 ### 2.0.1 ###
 
