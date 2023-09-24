@@ -8,7 +8,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: Hello World
- * Version: 2.1.0
+ * Version: 2.0.1
  * Description: In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new plugin. And how could someone possible name a new default plugin other than "Hello World", as it's THE definition for a default example :)
  * Author: Bernhard Kau
  * Author URI: http://kau-boys.de
@@ -57,7 +57,11 @@ function hello_world_admin_notice() {
 	$chosen = hello_world_lyric();
 
 	if ( ! empty( $chosen ) ) {
-		echo '<p id="hello_world">' . esc_html( $chosen ) . '</p>';
+		printf(
+			'<p id="hello_world"><span class="screen-reader-text">%s </span><span dir="ltr">%s</span></p>',
+			esc_html__( 'Quote from the Hello World plugin:', 'hello-world' ),
+			esc_html( $chosen )
+		);
 	}
 }
 add_action( 'admin_notices', 'hello_world_admin_notice' );
