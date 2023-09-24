@@ -4,7 +4,7 @@
 **Tags:** hello, dolly, yoda, world  
 **Tested up to:** 6.3  
 **Requires PHP:** 5.2  
-**Stable tag:** 2.0.1  
+**Stable tag:** 2.1.0  
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0  
 
@@ -18,6 +18,11 @@ In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new p
 Yes, you can! Just create a folder `wp-content/uploads/hello-world-lyrics` and save your lyric file there, with one "quote" per line.
 
 ## Change Log ##
+
+### 2.1.0 ###
+
+* Update CSS from Hello Dolly
+* Make the output more accessible
 
 ### 2.0.1 ###
 
