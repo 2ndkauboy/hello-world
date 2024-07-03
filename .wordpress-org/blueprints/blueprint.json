@@ -12,16 +12,6 @@
       "step": "login",
       "username": "admin",
       "password": "password"
-    },
-    {
-      "step": "installPlugin",
-      "pluginZipFile": {
-        "resource": "wordpress.org/plugins",
-        "slug": "hello-world"
-      },
-      "progress": {
-        "weight": 2
-      }
     }
   ],
   "landingPage": "/wp-admin/admin.php?page=hello-world"
