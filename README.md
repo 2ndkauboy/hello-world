@@ -2,7 +2,7 @@
 Contributors: Kau-Boy  
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7914504  
 Tags: hello, dolly, yoda, world, lyrics  
-Tested up to: 6.5  
+Tested up to: 6.6  
 Requires PHP: 5.2  
 Stable tag: 2.1.0  
 License: GPLv3  
