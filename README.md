@@ -8,6 +8,7 @@ Stable tag: 2.1.0
 License: GPLv3  
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
+Similar to "Hello Dolly", this plugin lets you choose from some lyrics files, of which one line is shown in your dashboard on every page load.
 
 In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new plugin. And how could someone possible name a new default plugin other than "Hello World", as it's THE definition for a default example :)
 
