@@ -20,6 +20,10 @@ Yes, you can! Just create a folder `wp-content/uploads/hello-world-lyrics` and s
 
 ## Changelog
 
+### 2.1.1
+* Add blueprint.json file for live demo
+* Time invested for this release: 30min
+
 ### 2.1.0
 * Update CSS from Hello Dolly
 * Make the output more accessible
