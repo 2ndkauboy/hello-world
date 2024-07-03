@@ -1,12 +1,11 @@
 {
   "preferredVersions": {
-    "php": "8.0",
+    "php": "8.3",
     "wp": "latest"
   },
   "phpExtensionBundles": [
     "kitchen-sink"
   ],
-  "features": {},
   "steps": [
     {
       "step": "login",
