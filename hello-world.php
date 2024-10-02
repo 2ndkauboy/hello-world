@@ -33,15 +33,8 @@ add_action( 'plugins_loaded', 'hello_world_load_plugin_textdomain' );
  * @return string
  */
 function hello_world_lyric() {
-	// Get the chosen lyrics files file for the user.
-	$lyrics_file = get_user_option( 'hello_world_lyrics', get_current_user_id() );
-	// Check if file exists.
-	if ( empty( $lyrics_file ) || ! file_exists( $lyrics_file ) ) {
-		return false;
-	}
-
-	// These are the lyrics to show.
-	$lyrics = file_get_contents( $lyrics_file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	// Get the chosen lyrics file for the user.
+	$lyrics = hello_world_get_chosen_lyrics_file_content();
 
 	// Here we split it into lines.
 	$lyrics = explode( "\n", $lyrics );
@@ -104,7 +97,6 @@ add_action( 'admin_head', 'hello_world_css' );
 function hello_world_menu() {
 	add_options_page( __( 'Hello World Lyrics', 'hello-world' ), __( 'Hello World', 'hello-world' ), 'read', 'hello-world', 'hello_world_options' );
 }
-
 add_action( 'admin_menu', 'hello_world_menu' );
 
 /**
@@ -113,9 +105,15 @@ add_action( 'admin_menu', 'hello_world_menu' );
 function hello_world_options() {
 	$settings_saved = false;
 
+	$available_lyrics = hello_world_get_available_lyrics();
+
 	if ( isset( $_POST['save'] ) && check_admin_referer( 'hello_world_options', 'hello_world_options_nonce' ) ) {
-		$chosen_lyric = isset( $_POST['hello_world_lyrics'] ) ? sanitize_text_field( wp_unslash( $_POST['hello_world_lyrics'] ) ) : '';
-		update_user_option( get_current_user_id(), 'hello_world_lyrics', $chosen_lyric );
+		// Prevent any arbitrary path to be used.
+		$chosen_lyric = isset( $_POST['hello_world_lyrics'] ) ? basename( sanitize_file_name( wp_unslash( $_POST['hello_world_lyrics'] ) ) ) : '';
+		// Only allow saving file paths that exist.
+		if ( '' === $chosen_lyric || isset( $available_lyrics[ $chosen_lyric ] ) ) {
+			update_user_option( get_current_user_id(), 'hello_world_lyrics', $chosen_lyric );
+		}
 		$settings_saved = true;
 	}
 
@@ -140,8 +138,8 @@ function hello_world_options() {
 				</p>
 				<select id="hello_world_lyrics" name="hello_world_lyrics">
 					<option value=""><?php echo esc_html__( 'none (hide lyrics)', 'hello-world' ); ?></option>
-					<?php foreach ( hello_world_get_available_lyrics() as $lyrics_file ) : ?>
-						<option value="<?php echo esc_attr( $lyrics_file ); ?>" <?php selected( $lyrics_file, $current_lyric ); ?>>
+					<?php foreach ( $available_lyrics as $lyrics_file ) : ?>
+						<option value="<?php echo esc_attr( basename( $lyrics_file ) ); ?>" <?php selected( basename( $lyrics_file ), basename( $current_lyric ) ); ?>>
 							<?php echo esc_html( basename( $lyrics_file ) ); ?>
 						</option>
 					<?php endforeach ?>
@@ -167,5 +165,40 @@ function hello_world_get_available_lyrics() {
 	$upload_dir    = wp_get_upload_dir();
 	$custom_lyrics = glob( $upload_dir['basedir'] . '/hello-world-lyrics/*.txt' );
 
-	return array_merge( $plugin_lyrics, $custom_lyrics );
+	$lyrics_files = array_merge( $plugin_lyrics, $custom_lyrics );
+
+	$available_lyrics = array();
+	foreach ( $lyrics_files as $lyrics_file ) {
+		$available_lyrics[ basename( $lyrics_file ) ] = $lyrics_file;
+	}
+
+	return $available_lyrics;
+}
+
+/**
+ * Load the chosen lyrics file.
+ *
+ * @return string
+ */
+function hello_world_get_chosen_lyrics_file_content() {
+	$lyrics_file = get_user_option( 'hello_world_lyrics', get_current_user_id() );
+
+	// Fallback for full path values stored in the option.
+	if ( sanitize_file_name( $lyrics_file ) !== $lyrics_file ) {
+		if ( preg_match( '#(plugins)?/?hello-world/?lyrics/?(.*)#', $lyrics_file, $matches ) ) {
+			$lyrics_file = $matches[2];
+		}
+	}
+
+	$available_lyrics = hello_world_get_available_lyrics();
+
+	// Check if file exists.
+	if ( empty( $lyrics_file ) || ! file_exists( $available_lyrics[ $lyrics_file ] ) ) {
+		return false;
+	}
+
+	// These are the lyrics to show.
+	$lyrics = file_get_contents( $available_lyrics[ $lyrics_file ] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+
+	return $lyrics;
 }
