@@ -2,7 +2,7 @@
 /**
  * Hello World
  *
- * @package     HelloWorld
+ * @package     hello-world
  * @author      Bernhard Kau
  * @license     GPLv3
  *
@@ -14,7 +14,6 @@
  * Author URI: http://kau-boys.de
  * Plugin URI: https://github.com/2ndkauboy/hello-world
  * Text Domain: hello-world
- * Domain Path: /languages
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0
  */
@@ -146,7 +145,7 @@ function hello_world_options() {
 				</select>
 			</div>
 			<p class="submit">
-				<input class="button-primary" name="save" type="submit" value="<?php echo esc_html__( 'Save Changes', 'hello-world' ); ?>"/>
+				<input class="button-primary" name="save" type="submit" value="<?php echo esc_attr__( 'Save Changes', 'hello-world' ); ?>"/>
 			</p>
 		</form>
 	</div>
