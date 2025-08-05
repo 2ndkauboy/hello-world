@@ -20,6 +20,10 @@ In tribute to the famous "Hello Dolly" plugin by Matt Mullenweg comes this new p
 
 Yes, you can! Just create a folder `wp-content/uploads/hello-world-lyrics` and save your lyric file there, with one "quote" per line.
 
+### Where do I report security bugs found in this plugin? ###
+
+Please report security bugs found in the source code of the Hello World plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/6c798e4f-cc8b-44f3-9140-6d74f065bc2a). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 ## Changelog
 
 ### 2.2.1
