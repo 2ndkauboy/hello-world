@@ -19,14 +19,6 @@
  */
 
 /**
- * Load the translation file
- */
-function hello_world_load_plugin_textdomain() {
-	load_plugin_textdomain( 'hello-world' );
-}
-add_action( 'plugins_loaded', 'hello_world_load_plugin_textdomain' );
-
-/**
  * Get the random lyric
  *
  * @return string
